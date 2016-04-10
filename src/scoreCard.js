@@ -13,15 +13,15 @@ Scorecard.prototype.newThrow = function(score){
                 this.frames[this.currentFrame-2]];
 
   this.pushScore(score, frames);
-  this.frames[0].setExtra();
+  frames[0].setExtra();
   this.checkEnd();
   this.advanceGame();
 }
 
 Scorecard.prototype.pushScore = function(score, frames){
   frames[0].pushNormal(score);
-  frames[1].pushExtra(score);
-  frames[2].pushExtra(score);
+  if(frames[1]){frames[1].pushExtra(score);}
+  if(frames[2]){frames[2].pushExtra(score);}
 }
 
 Scorecard.prototype.calculateTotalScore = function(){
